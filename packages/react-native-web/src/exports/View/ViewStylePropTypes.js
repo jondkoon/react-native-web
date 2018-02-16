@@ -15,11 +15,14 @@ import InteractionPropTypes from '../../modules/InteractionPropTypes';
 import LayoutPropTypes from '../../modules/LayoutPropTypes';
 import ShadowPropTypes from '../../modules/ShadowPropTypes';
 import TransformPropTypes from '../../modules/TransformPropTypes';
-import { number, oneOf, string } from 'prop-types';
+import { number, object, oneOf, string } from 'prop-types';
 
 const overscrollBehaviorType = oneOf(['auto', 'contain', 'none']);
 
 const ViewStylePropTypes = {
+  ':active': object,
+  ':focus': object,
+  ':hover': object,
   ...AnimationPropTypes,
   ...BorderPropTypes,
   ...InteractionPropTypes,

@@ -16,8 +16,9 @@ const emptyObject = {};
 const STYLE_ELEMENT_ID = 'react-native-stylesheet';
 
 const createClassName = (prop, value) => {
-  const hashed = hash(prop + normalizeValue(value));
-  return process.env.NODE_ENV !== 'production' ? `rn-${prop}-${hashed}` : `rn-${hashed}`;
+  const normalizedProp = prop.replace(':', '');
+  const hashed = hash(normalizedProp + normalizeValue(value));
+  return process.env.NODE_ENV !== 'production' ? `rn-${normalizedProp}-${hashed}` : `rn-${hashed}`;
 };
 
 const normalizeValue = value => (typeof value === 'object' ? JSON.stringify(value) : value);

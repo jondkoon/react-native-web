@@ -1,3 +1,4 @@
+import createPsuedoClassRules from './createPseudoClassRules';
 import createKeyframesRules from './createKeyframesRules';
 import createRuleBlock from './createRuleBlock';
 
@@ -67,6 +68,21 @@ const createAtomicRules = (selector, prop, value) => {
         rules.push(`${selector}{${block}}`);
       }
 
+      break;
+    }
+
+    case ':active':
+    case ':focus': {
+      const block = createPsuedoClassRules(value);
+      rules.push(`${selector}${prop}{${block}}`);
+      break;
+    }
+
+    case ':hover': {
+      const block = createPsuedoClassRules(value);
+      if (!(window.matchMedia && window.matchMedia('(hover: none)').matches)) {
+        rules.push(`${selector}:hover{${block}}`);
+      }
       break;
     }
 

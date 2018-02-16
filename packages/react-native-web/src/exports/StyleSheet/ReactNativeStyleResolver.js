@@ -166,7 +166,10 @@ export default class ReactNativeStyleResolver {
             if (
               styleProp === 'pointerEvents' ||
               styleProp === 'placeholderTextColor' ||
-              styleProp === 'animationName'
+              styleProp === 'animationName' ||
+              styleProp === ':active' ||
+              styleProp === ':focus' ||
+              styleProp === ':hover'
             ) {
               const className = this.styleSheetManager.injectDeclaration(styleProp, value);
               if (className) {
